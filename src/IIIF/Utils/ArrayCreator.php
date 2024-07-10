@@ -82,13 +82,13 @@ class ArrayCreator {
     {
         if (is_array($value)) {
           foreach($value as &$class) {
-            if (method_exists($class, "toArray")) {
+            if ($class !== null && method_exists($class, "toArray")) {
               $class = $class->toArray();
             }
           }
         }
         else {
-         if (method_exists($value, "toArray")) {
+         if ($value !== null && method_exists($value, "toArray")) {
            $value = $value->toArray();
          }
         }
